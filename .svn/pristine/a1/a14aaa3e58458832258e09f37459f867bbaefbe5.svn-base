@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：要求与对应的接口一致 -->
+<mapper namespace="com.baizhuo.smbms.mapper.UserMapper">
+	<!-- 定义列名|where条件的SQL片段，在增删改查标签中重用 -->
+	<sql id="columns">
+		`openid`,
+		`name`,
+		`gender`,
+		`city`,
+		`gender`
+	</sql>
+
+	<select id="get" parameterType="int" resultType="User">
+		<!-- SQL语句 -->
+		select
+		*
+		from smbms_user where id=#{id}
+	</select>
+	
+	<select id="getlist" resultType="User" >
+		<!-- SQL语句 -->
+		select
+		*
+		from smbms_user 
+	</select>
+
+	<select id="find" parameterType="User" resultType="User">
+		select
+		*
+		from smbms_user where 1=1
+		<if test="userCode!=null and userCode!=''">
+			and userCode = #{userCode}
+		</if>
+		<if test="userPassword!=null and userPassword!=''">
+			and userPassword = #{userPassword}
+		</if>
+	</select>
+
+	<insert id="add" parameterType="User">
+		insert into
+		user(openid,name,Gender,city)
+		values(#{openid},#{name},#{Gender},#{city})
+	</insert>
+	
+	<!-- 根据用户名称查询用户列表（模糊查询） -->
+	<select id="getUserListByUserName">
+		select * from smbms_user
+		where 
+			userName like CONCAT('%', #{userName}, '%')
+	</select>
+
+</mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：要求与对应的接口一致 -->
+<mapper namespace="com.baizhuo.smbms.mapper.StudentMapper">
+	<!-- 定义列名|where条件的SQL片段，在增删改查标签中重用 -->
+	<select id="getlist" resultType="Student" >
+		<!-- SQL语句 -->
+		SELECT * FROM student
+	</select>
+	<select id="user" resultType="Student">
+		<!-- SQL语句 -->
+		select * from student where username=#{username}
+	</select>
+	<select id="userall" resultType="Student">
+		<!-- SQL语句 -->
+		select * from student where username like '%${username}%' and sex like '%${sex}%'
+	</select>
+	<update id="edit" parameterType="Student">
+		update student set sex=#{sex},birthYear=#{birthYear},grade=#{grade},collegeID=#{collegeID} where username= #{username}
+	</update>
+	<insert id="add" parameterType="Student">
+		INSERT INTO student (username,sex,birthYear,grade,collegeID) VALUES (#{username},#{sex},#{birthYear},#{grade},#{collegeID});
+	</insert>
+	<insert id="delete" parameterType="Student">
+		delete from student where username= #{username};
+	</insert>
+	</mapper>

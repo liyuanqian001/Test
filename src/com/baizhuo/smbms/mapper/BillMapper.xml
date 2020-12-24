@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：要求与对应的接口一致 -->
+<mapper namespace="com.baizhuo.smbms.mapper.BillMapper">
+	<!-- 定义列名|where条件的SQL片段，在增删改查标签中重用 -->
+	<select id="getlist" resultType="Bill" >
+		<!-- SQL语句 -->
+		SELECT * FROM smbms_bill
+	</select>
+	</mapper>

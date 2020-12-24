@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+		PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 加载数据库的属性文件 -->
+	<!-- 设置框架的全局属性 -->
+	<settings>
+		<setting name="cacheEnabled" value="true" />
+		<setting name="lazyLoadingEnabled" value="true" />
+		<setting name="multipleResultSetsEnabled" value="true" />
+		<setting name="useColumnLabel" value="true" />
+		<setting name="useGeneratedKeys" value="false" />
+		<setting name="autoMappingBehavior" value="PARTIAL" />
+		<setting name="defaultExecutorType" value="SIMPLE" />
+		<setting name="defaultStatementTimeout" value="25" />
+		<setting name="safeRowBoundsEnabled" value="false" />
+		<setting name="mapUnderscoreToCamelCase" value="false" />
+		<setting name="localCacheScope" value="SESSION" />
+		<setting name="jdbcTypeForNull" value="OTHER" />
+		<setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString" />
+	</settings>
+	<!-- 设置类型别名 -->
+	<typeAliases>
+		<typeAlias type="com.baizhuo.smbms.entity.User" alias="User"/>
+		<typeAlias type="com.baizhuo.smbms.entity.Role" alias="Role"/>
+		<typeAlias type="com.baizhuo.smbms.entity.Bill" alias="Bill"/>
+		<typeAlias type="com.baizhuo.smbms.entity.Provider" alias="Provider"/>
+		<typeAlias type="com.baizhuo.smbms.entity.Student" alias="Student"/>
+	</typeAliases>
+	<!-- 设置数据库环境 -->
+	<!-- 映射文件 -->
+	<mappers>
+		<mapper resource="com/baizhuo/smbms/mapper/StudenMapper.xml"/>
+	</mappers>
+</configuration>
